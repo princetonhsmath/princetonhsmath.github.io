@@ -1,3 +1,0 @@
-# MATHS
-
-i am math
