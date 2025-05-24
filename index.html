@@ -145,46 +145,46 @@
             <h2 id="about-us">Our Team</h2>
             Our team is made up of 11 dedicated members of Princeton High School's Math Team.<br><br>
             <div id="all-members" class="flex row wrap middle">
-                <div class="pfp-img" id="emma" name="emma">
+                <div class="pfp-img" id="emma" name="emma" tabindex="0">
                     <h3>Emma</h3>
                 </div>
-                <div class="pfp-img" id="maiya" name="maiya">
+                <div class="pfp-img" id="maiya" name="maiya" tabindex="0">
                     <h3>Maiya</h3>
                 </div>
-                <div class="pfp-img" id="william" name="william">
+                <div class="pfp-img" id="william" name="william" tabindex="0">
                     <h3>William</h3>
                 </div>
-                <div class="pfp-img" id="jonathan" name="jonathan">
+                <div class="pfp-img" id="jonathan" name="jonathan" tabindex="0">
                     <h3>Jonathan</h3>
                 </div>
-                <div class="pfp-img" id="alex" name="alex">
+                <div class="pfp-img" id="alex" name="alex" tabindex="0">
                     <h3>Alex</h3>
                 </div>
-                <div class="pfp-img" id="mateo" name="mateo">
+                <div class="pfp-img" id="mateo" name="mateo" tabindex="0">
                     <h3>Mateo</h3>
                 </div>
-                <div class="pfp-img" id="jay" name="jay">
+                <div class="pfp-img" id="jay" name="jay" tabindex="0">
                     <h3>Jay</h3>
                 </div>
-                <div class="pfp-img" id="yoav" name="yoav">
+                <div class="pfp-img" id="yoav" name="yoav" tabindex="0">
                     <h3>Yoav</h3>
                 </div>
-                <div class="pfp-img" id="oscar" name="oscar">
+                <div class="pfp-img" id="oscar" name="oscar" tabindex="0">
                     <h3>Oscar</h3>
                 </div>
-                <div class="pfp-img" id="daniel" name="daniel">
+                <div class="pfp-img" id="daniel" name="daniel" tabindex="0">
                     <h3>Daniel</h3>
                 </div>
-                <div class="pfp-img" id="om" name="om">
+                <div class="pfp-img" id="om" name="om" tabindex="0">
                     <h3>Om</h3>
                 </div>
             </div>
 
             <div class="member-container" id="member-container">
                 <div class="flex middle">
-                    <span id="prev-member" class="nav-arrow fa-solid fa-arrow-left"></span>
+                    <span id="prev-member" tabindex="0" class="nav-arrow fa-solid fa-arrow-left"></span>
                     <h3 class="member-name">Emma Li</h3>
-                    <span id="next-member" class="nav-arrow fa-solid fa-arrow-right"></span>
+                    <span id="next-member" tabindex="0" class="nav-arrow fa-solid fa-arrow-right"></span>
                 </div>
                 <br>
                 <div class="member-info active" id="member-emma" name="emma">
@@ -274,16 +274,19 @@
                     document.querySelector(".member-name").innerText = names[index];
                     document.getElementById(`member-${members[index]}`).classList.add('active');
                 }
-
-                document.getElementById('prev-member').addEventListener('click', () => {
+                const decr = () => {
                     currentMember = (currentMember - 1 + members.length) % members.length;
                     showMember(currentMember);
-                });
-
-                document.getElementById('next-member').addEventListener('click', () => {
+                };
+                const incr = () => {
                     currentMember = (currentMember + 1) % members.length;
                     showMember(currentMember);
-                });
+                }
+                document.getElementById('prev-member').addEventListener('click', decr);
+                document.getElementById('prev-member').addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") decr(); });
+
+                document.getElementById('next-member').addEventListener('click', incr);
+                document.getElementById('next-member').addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") incr(); });
 
                 document.addEventListener('keydown', (e) => {
                     if (e.key === 'ArrowLeft') {
@@ -308,6 +311,7 @@
                 for (const el of membEls) {
                     const name = el.getAttribute("name");
                     el.addEventListener("click", changeMember.bind(this, name));
+                    el.addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") changeMember(name); });
                 }
 
                 for (const el of document.images) {
