@@ -20,7 +20,7 @@
     <nav class="up">
         <div id="nav-interior">
             <div id="icon">
-                <a href=""><img class="icon" src="favicon.png" /></a>
+                <a href=""><img class="icon" src="static/icon.png" /></a>
                 <h1 id="name">Princeton Math Tournament</h1>
                 <h1 id="name-short">PHSMT</h1>
             </div>
@@ -144,7 +144,7 @@
         <div class="section">
             <h2 id="about-us">Our Team</h2>
             Our team is made up of 11 dedicated members of Princeton High School's Math Team.<br><br>
-            <div id="all-members" class="flex row wrap middle">
+            <div id="all-members">
                 <div class="pfp-img" id="emma" name="emma" tabindex="0">
                     <h3>Emma</h3>
                 </div>
@@ -181,7 +181,7 @@
             </div>
 
             <div class="member-container" id="member-container">
-                <div class="flex middle">
+                <div id="name-container">
                     <span id="prev-member" tabindex="0" class="nav-arrow fa-solid fa-arrow-left"></span>
                     <h3 class="member-name">Emma Li</h3>
                     <span id="next-member" tabindex="0" class="nav-arrow fa-solid fa-arrow-right"></span>
@@ -260,78 +260,25 @@
                     </p>
                 </div>
             </div>
-            <script>
-                const members = [
-                    "emma", "maiya", "william", "jonathan", "alex", "mateo", "jay", "yoav", "oscar", "daniel", "om"
-                ];
-                const names = [
-                    "Emma Li", "Maiya Qi", "William Liu", "Jonathan Ji", "Alex Sheng", "Mateo Brody", "Jay ?", "Yoav ?", "Oscar Huang", "Daniel Haiduc", "Om Mehta"
-                ];
-                let currentMember = 0;
-
-                function showMember(index) {
-                    document.querySelectorAll('.member-info').forEach(el => { el.classList.remove('active'); });
-                    document.querySelector(".member-name").innerText = names[index];
-                    document.getElementById(`member-${members[index]}`).classList.add('active');
-                }
-                const decr = () => {
-                    currentMember = (currentMember - 1 + members.length) % members.length;
-                    showMember(currentMember);
-                };
-                const incr = () => {
-                    currentMember = (currentMember + 1) % members.length;
-                    showMember(currentMember);
-                }
-                document.getElementById('prev-member').addEventListener('click', decr);
-                document.getElementById('prev-member').addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") decr(); });
-
-                document.getElementById('next-member').addEventListener('click', incr);
-                document.getElementById('next-member').addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") incr(); });
-
-                document.addEventListener('keydown', (e) => {
-                    if (e.key === 'ArrowLeft') {
-                        currentMember = (currentMember - 1 + members.length) % members.length;
-                        showMember(currentMember);
-                    } else if (e.key === 'ArrowRight') {
-                        currentMember = (currentMember + 1) % members.length;
-                        showMember(currentMember);
-                    }
-                });
-
-                let inverseMembers = new Map();
-                members.forEach((name, i) => { inverseMembers.set(name, i); })
-
-                function changeMember(name) {
-                    currentMember = inverseMembers.get(name);
-                    showMember(currentMember);
-                    document.querySelector("#member-container h3").scrollIntoView({ "block": "center" });
-                }
-
-                const membEls = document.getElementsByClassName("pfp-img");
-                for (const el of membEls) {
-                    const name = el.getAttribute("name");
-                    el.addEventListener("click", changeMember.bind(this, name));
-                    el.addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") changeMember(name); });
-                }
-
-                for (const el of document.images) {
-                    el.classList.add("hidden");
-                    el.addEventListener("load", () => { el.classList.remove("hidden"); });
-                }
-            </script>
         </div>
         <div class="section">
             <h2 id="sponsoring">Sponsor us!</h2>
-            <!-- <iframe
-                src="https://docs.google.com/forms/d/e/1FAIpQLSdYp5d7jKq86moMLrutMZ6z2Hjg9CpIViKcvxEdtJrLTPRjLA/viewform?embedded=true"
-                width="600" height="900" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe> -->
             <p>
-                You will sponsor us and you will be happy!<br>
-                If you don't sponsor us, terrible things will happen<br>
-                so sponsor us!<br>
-                you'll get +10 points and help a bunch of kids<br>
-                so you're being a <b>good person</b> 🦅🦅🦅🦅🦅 which is good<br>
-                🦅🦅🦅🦅🦅🦅
+                Princeton Math Tournament wouldn't be possible without the help of our sponsors<br>
+                If you're interested in sponsoring us, please email <a
+                    href="mailto:li.emma222@gmail.com">li.emma222@gmail.com</a> for more info. We appreciate any help we
+                can get :)<br>
+            </p>
+            <h3>We offer 3 tiers of perks for sponsors:</h3>
+            <ul>
+                <li><b>Platinum:</b> All of the perks from gold, alongside a 30-minute sponsor event</li>
+                <li><b>Gold:</b> All the perks of silver, plus a sponsor mention in the opening ceremony</li>
+                <li><b>Silver:</b> Your company's name on the website and on all event merchanise</li>
+            </ul>
+            <p>
+                Please help us make great competitions by sponsoring! It really means a lot to us, and to all the
+                participants of the competition!<br><br>
+                🦅🦅🦅🦅🦅
             </p>
         </div>
     </div>

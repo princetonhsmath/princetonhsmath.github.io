@@ -1,14 +1,13 @@
 document.addEventListener("DOMContentLoaded", setTimeout.bind(this, () => document.body.classList.remove("hidden"), 50));
 
-document.querySelectorAll("h2").forEach(el => {
-    el.addEventListener("click", () => {
-        window.location.hash = el.id;
-        goToSection();
-    });
-});
+document.querySelectorAll("h2").forEach(el => el.addEventListener("click", () => {
+    window.location.hash = el.id;
+    goToSection();
+})
+);
 
 let pastTop = false;
-const updateNav = () => {
+function updateNav() {
     const below = (document.documentElement.scrollTop > window.innerHeight);
     const topNav = document.querySelector("nav");
     if (below) {
@@ -23,7 +22,7 @@ const updateNav = () => {
     }
 }
 
-const goToSection = () => {
+function goToSection() {
     if (window.location.hash == "") return;
     console.log(window.location.hash);
     const el = document.querySelector(window.location.hash);
@@ -64,5 +63,53 @@ addEventListener("DOMContentLoaded", setTimeout.bind(this, goToSection, 400));
 addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("a").forEach(el => {
         if (el.href.includes("#")) el.addEventListener("click", setTimeout.bind(this, goToSection, 0)); // i hate this
-    })
+    });
 })
+
+const members = ["emma", "maiya", "william", "jonathan", "alex", "mateo", "jay", "yoav", "oscar", "daniel", "om"];
+const names = ["Emma Li", "Maiya Qi", "William Liu", "Jonathan Ji", "Alex Sheng", "Mateo Brody", "Jay ?", "Yoav ?", "Oscar Huang", "Daniel Haiduc", "Om Mehta"];
+let currentMember = 0;
+
+function showMember() {
+    document.querySelectorAll('.member-info').forEach(el => { el.classList.remove('active'); });
+    document.querySelector(".member-name").innerText = names[currentMember];
+    document.querySelector(`.member-info[name="${members[currentMember]}"]`).classList.add('active');
+}
+function decr() {
+    currentMember = (currentMember - 1 + members.length) % members.length;
+    showMember();
+};
+function incr() {
+    currentMember = (currentMember + 1) % members.length;
+    showMember();
+}
+document.getElementById('prev-member').addEventListener('click', decr);
+document.getElementById('prev-member').addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") decr(); });
+
+document.getElementById('next-member').addEventListener('click', incr);
+document.getElementById('next-member').addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") incr(); });
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') {
+        currentMember = (currentMember - 1 + members.length) % members.length;
+        showMember();
+    } else if (e.key === 'ArrowRight') {
+        currentMember = (currentMember + 1) % members.length;
+        showMember();
+    }
+});
+
+let inverseMembers = new Map();
+members.forEach((name, i) => { inverseMembers.set(name, i); })
+
+function changeMember(name) {
+    currentMember = inverseMembers.get(name);
+    showMember(currentMember);
+    document.querySelector("#member-container h3").scrollIntoView({ "block": "center" });
+}
+
+document.querySelectorAll(".pfp-img").forEach(el => {
+    const name = el.getAttribute("name");
+    el.addEventListener("click", changeMember.bind(this, name));
+    el.addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") changeMember(name); });
+});

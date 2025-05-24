@@ -2,6 +2,7 @@
     --bg-col: #000b1a;
     --bg-accent: #0b2031;
     --bg-accent-1: #193247;
+
     background: var(--bg-col);
     font-family: sans-serif;
 
@@ -11,34 +12,11 @@
     background-image: radial-gradient(circle, #0b1b31 0%, var(--bg-col) 100%);
     background-repeat: no-repeat;
 
-    color: white;
     scroll-behavior: smooth;
 }
 
 a {
     font-size: 1.1rem;
-}
-
-/* GENERIC LAYOUT STUFF */
-.flex {
-    display: flex;
-    gap: 1em;
-}
-
-.flex.row {
-    flex-direction: row;
-}
-
-.flex.col {
-    flex-direction: column;
-}
-
-.flex.wrap {
-    flex-wrap: wrap;
-}
-
-.flex.middle {
-    justify-content: center;
 }
 
 /* MAIN */
@@ -51,11 +29,9 @@ body {
     color: #eeeeee;
     margin: 0;
     font-family: "Lora";
-    font-size: 1rem;
-    /* background: radial-gradient(circle, #001129 0%, var(--bg-col) 100%); */
 }
 
-body.hidden {
+.hidden {
     opacity: 0;
 }
 
@@ -79,20 +55,19 @@ footer {
 
 #icon>a {
     display: flex;
-    align-items: center;
 }
 
 #page {
     padding: 2rem;
 }
 
+#page {
+    font-size: 1.1rem;
+}
+
 a {
     color: #9fbdff;
     text-decoration: none;
-}
-
-#page {
-    font-size: 1.1rem;
 }
 
 a:hover {
@@ -109,8 +84,6 @@ a:hover {
 
 #top-links {
     display: flex;
-    gap: 2rem;
-    width: 100%;
     justify-content: space-around;
 }
 
@@ -127,7 +100,7 @@ a:hover {
     margin: 1rem 0;
 }
 
-@media screen and (max-width:900px) {
+@media screen and (max-width:1000px) {
     #top-interior>h1 {
         font-size: 10vw;
         text-align: center;
@@ -152,15 +125,15 @@ a:hover {
 #links {
     display: flex;
     gap: 1rem;
-    flex-direction: row;
 }
 
 nav {
-    padding: 1rem;
+    display: flex;
+    flex-direction: column;
     background: #0b2031aa;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(16px);
     position: fixed;
-    height: 3em;
+    height: 5em;
     top: 0;
     left: 0;
     right: 0;
@@ -174,23 +147,12 @@ nav.up {
 
 #icon {
     display: flex;
-    flex-direction: row;
     gap: 1rem;
     align-items: center;
 }
 
-nav>#links {
-    display: flex;
-    gap: 2rem;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    font-size: 1.1rem;
-}
-
 #nav-right {
     display: flex;
-    flex-direction: row;
     gap: 1rem;
     align-items: center;
 }
@@ -209,22 +171,20 @@ nav>#links {
 }
 
 nav.big {
-    display: block;
-    height: 100%;
+    height: 100vh;
 }
 
 #nav-interior {
+    padding: 1rem;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    height: 3em;
-    flex-direction: row;
+    height: 5em;
     gap: 1rem;
 }
 
 nav.big #menu {
-    transform-origin: center;
     transform: rotateZ(180deg);
 }
 
@@ -244,7 +204,6 @@ h2:hover {
     color: #b5ccfd;
 }
 
-
 #name-short {
     display: none;
 }
@@ -257,9 +216,7 @@ h2:hover {
     #name-short {
         display: block;
     }
-}
 
-@media screen and (max-width:1000px) {
     #links>a:nth-child(3) {
         display: none
     }
@@ -282,7 +239,6 @@ nav * {
 
 nav.big #links {
     top: -20vh;
-    /* opacity: 0; */
 }
 
 @media screen and (max-width:650px) {
@@ -299,21 +255,21 @@ iframe {
     background: white;
     border-radius: 1rem;
     padding-top: 1rem;
-    min-height: max-content;
     width: calc(min(100%, 700px));
 }
 
 #menu-content {
-    position: relative;
+    max-height: 100%;
     display: none;
     text-align: center;
+    overflow: scroll;
+    padding: 1rem;
 }
 
 #menu-content a {
     display: block;
     margin-top: 1.5rem;
     padding: 0.5rem;
-    margin-bottom: 0;
     font-size: 1.75rem;
     color: white;
 }
@@ -333,11 +289,12 @@ table {
     border-spacing: 0;
     border: white 1px solid;
     width: 100%;
+    max-width: 80ch;
 }
 
 td {
     border-bottom: white 1px solid;
-    padding: 0.5rem;
+    padding: 0.75rem;
 }
 
 tbody>tr:last-child>td {
@@ -368,18 +325,21 @@ tr:nth-child(2n) {
     background-color: rgba(155, 188, 255, 0.05);
 }
 
-h2 {
-    font-size: 2rem;
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-table {
-    max-width: 80ch;
+tr:hover:nth-child(2n) {
+    background-color: rgba(205, 222, 255, 0.1);
+}
+
+h2 {
+    font-size: 2rem;
 }
 
 #menu-content .lesser a {
     color: gray;
     font-size: 1.25rem;
-    padding: 0.25rem;
     margin: 0;
 }
 
@@ -393,6 +353,13 @@ table {
     background-blend-mode: multiply;
 }
 
+@media screen and (max-width:1000px) {
+    .pfp-img {
+        width: 160px;
+        height: 160px;
+    }
+}
+
 .pfp-img:hover {
     background-color: #01010173;
     background-blend-mode: multiply;
@@ -400,43 +367,43 @@ table {
 }
 
 .pfp-img[name="emma"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="maiya"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="william"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="jonathan"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="alex"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="mateo"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="jay"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="yoav"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="oscar"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/oscar.jpeg");
 }
 
 .pfp-img[name="daniel"] {
-    background-image: url("static/team/orz.jpeg");
+    background-image: url("static/team/example.jpeg");
 }
 
 .pfp-img[name="om"] {
@@ -459,10 +426,10 @@ table {
 
 .pfp-img>h3 {
     opacity: 0;
-    position: relative;
     margin: 1rem;
     color: white;
     font-size: 1.5rem;
+    user-select: none;
 }
 
 .pfp-img:hover>h3 {
@@ -486,7 +453,7 @@ table {
 }
 
 .member-name {
-    margin: 0 0.5rem;
+    margin: 0;
 }
 
 .member-container {
@@ -502,6 +469,16 @@ table {
     font-size: 0.75rem;
 }
 
-.hidden {
-    opacity: 0;
+#name-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+#all-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
 }
