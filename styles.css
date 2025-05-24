@@ -37,6 +37,10 @@ a {
     flex-wrap: wrap;
 }
 
+.flex.middle {
+    justify-content: center;
+}
+
 /* MAIN */
 
 * {
@@ -57,11 +61,13 @@ body.hidden {
 
 footer {
     padding: 1rem 2rem;
+    gap: 1rem;
     background: #001129;
     color: #bababa;
     justify-content: space-between;
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .icon {
@@ -151,7 +157,7 @@ a:hover {
 
 nav {
     padding: 1rem;
-    background: #0b2031b9;
+    background: #0b2031aa;
     backdrop-filter: blur(8px);
     position: fixed;
     height: 3em;
@@ -375,4 +381,127 @@ table {
     font-size: 1.25rem;
     padding: 0.25rem;
     margin: 0;
+}
+
+/* MEMBER THING*/
+
+.pfp-img {
+    width: 200px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: multiply;
+}
+
+.pfp-img:hover {
+    background-color: #01010173;
+    background-blend-mode: multiply;
+    cursor: pointer;
+}
+
+.pfp-img[name="emma"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="maiya"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="william"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="jonathan"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="alex"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="mateo"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="jay"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="yoav"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="oscar"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="daniel"] {
+    background-image: url("static/team/orz.jpeg");
+}
+
+.pfp-img[name="om"] {
+    background-image: url("static/team/om.jpeg");
+}
+
+.member-info {
+    display: none;
+}
+
+.member-info.active {
+    display: block;
+}
+
+.pfp-img {
+    display: flex;
+    align-items: flex-end;
+    border-radius: 1rem;
+}
+
+.pfp-img>h3 {
+    opacity: 0;
+    position: relative;
+    margin: 1rem;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.pfp-img:hover>h3 {
+    opacity: 1;
+}
+
+
+.nav-arrow {
+    background: #020b13;
+    border-radius: 1rem;
+    height: 2rem;
+    width: 2rem;
+    align-content: center;
+    text-align: center;
+}
+
+.nav-arrow:hover {
+    cursor: pointer;
+    background: #082d4e;
+    box-shadow: 2px 2px 2px #00000071;
+}
+
+.member-name {
+    margin: 0 0.5rem;
+}
+
+.member-container {
+    background: var(--bg-accent);
+    border-radius: 1rem;
+    margin: 1rem 0;
+    padding: 1rem;
+}
+
+.member-role {
+    font-style: italic;
+    color: #ccc;
+    font-size: 0.75rem;
+}
+
+.hidden {
+    opacity: 0;
 }
