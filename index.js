@@ -1,20 +1,9 @@
 document.addEventListener("DOMContentLoaded", setTimeout.bind(this, () => document.body.classList.remove("hidden"), 50));
 
-document.addEventListener("DOMContentLoaded", setTimeout.bind(this, () => {
-    if (!window.location.hash) return;
-    document.querySelector(window.location.hash).scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-    });
-}, 500));
-
 document.querySelectorAll("h2").forEach(el => {
     el.addEventListener("click", () => {
-        el.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-        });
-        setTimeout(() => { window.location.hash = el.id; }, 10);
+        window.location.hash = el.id;
+        goToSection();
     });
 });
 
@@ -35,16 +24,11 @@ const updateNav = () => {
 }
 
 const goToSection = () => {
-    if (!window.location.hash) return;
-    el = document.querySelector(window.location.hash);
+    if (window.location.hash == "") return;
+    console.log(window.location.hash);
+    const el = document.querySelector(window.location.hash);
     if (!el) return;
-    el.addEventListener("click", () => {
-        el.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
-        });
-        setTimeout(() => { window.location.hash = el.id; }, 10);
-    });
+    el.scrollIntoView({ block: "center" });
 }
 
 document.addEventListener("scroll", updateNav);
@@ -74,9 +58,11 @@ menu.addEventListener("click", () => {
 
 setTimeout(updateNav, 1000);
 
-window.addEventListener("hashchange", e => {
-    e.preventDefault();
-    goToSection();
-});
+document.querySelectorAll("#menu-content a").forEach(el => el.addEventListener("click", hideMenu));
 
-goToSection();
+addEventListener("DOMContentLoaded", setTimeout.bind(this, goToSection, 400));
+addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("a").forEach(el => {
+        if (el.href.includes("#")) el.addEventListener("click", setTimeout.bind(this, goToSection, 0)); // i hate this
+    })
+})
