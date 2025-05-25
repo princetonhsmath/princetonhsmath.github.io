@@ -314,7 +314,7 @@ thead td:last-child {
 }
 
 td:nth-child(1) {
-    width: 10ch;
+    width: 12ch;
 }
 
 thead {
@@ -367,7 +367,7 @@ h2 {
 }
 
 .pfp-img[name="emma"] {
-    background-image: url("static/team/emma.jpeg");
+    background-image: url("static/team/emma.webp");
 }
 
 .pfp-img[name="maiya"] {
@@ -379,7 +379,7 @@ h2 {
 }
 
 .pfp-img[name="jonathan"] {
-    background-image: url("static/team/jj.jpg");
+    background-image: url("static/team/jonathan.jpg");
 }
 
 .pfp-img[name="alex"] {
@@ -391,7 +391,7 @@ h2 {
 }
 
 .pfp-img[name="jay"] {
-    background-image: url("static/team/example.jpeg");
+    background-image: url("static/team/jay.webp");
 }
 
 .pfp-img[name="yoav"] {
@@ -399,7 +399,7 @@ h2 {
 }
 
 .pfp-img[name="oscar"] {
-    background-image: url("static/team/oscar.jpeg");
+    background-image: url("static/team/oscar.webp");
 }
 
 .pfp-img[name="daniel"] {
