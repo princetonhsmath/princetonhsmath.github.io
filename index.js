@@ -113,3 +113,20 @@ document.querySelectorAll(".pfp-img").forEach(el => {
     el.addEventListener("click", changeMember.bind(this, name));
     el.addEventListener('keydown', e => { if (e.key == "Enter" || e.key == " ") changeMember(name); });
 });
+
+function resizePfps() {
+    const container = document.querySelector("#all-members");
+    const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+    const width = container.clientWidth;
+
+    // cols * tgt + (cols-1) * rem > width
+    // cols * (tgt+rem) > width + rem
+    // cols > width+rem
+    const tgt = parseFloat(document.querySelector("#all-members").computedStyleMap().get("--tgt"));
+    const cols = Math.trunc((width + rem) / ((tgt + 1) * rem));
+    const leftOver = width - (cols - 1) * rem;
+    container.style.setProperty("--size", `${leftOver / cols}px`);
+}
+
+window.addEventListener("resize", resizePfps);
+resizePfps();

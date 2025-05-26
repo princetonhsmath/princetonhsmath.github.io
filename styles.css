@@ -142,7 +142,7 @@ nav {
 }
 
 nav.up {
-    top: -50vh;
+    top: -10em;
 }
 
 #icon {
@@ -238,7 +238,7 @@ nav * {
 }
 
 nav.big #links {
-    top: -20vh;
+    top: -5em;
 }
 
 @media screen and (max-width:650px) {
@@ -345,25 +345,46 @@ h2 {
 
 /* MEMBER THING*/
 
+#all-members {
+    --size: 200px;
+    --tgt: 12;
+}
+
 .pfp-img {
-    width: 200px;
-    height: 200px;
+    width: var(--size);
+    height: var(--size);
     background-size: cover;
     background-position: center;
     background-blend-mode: multiply;
+
+    display: flex;
+    align-items: flex-end;
+    border-radius: 1rem;
+    transition: all 0.2s, width 0, height 0;
 }
 
-@media screen and (max-width:1000px) {
-    .pfp-img {
-        width: 160px;
-        height: 160px;
-    }
+.pfp-img>h3 {
+    opacity: 0;
+    margin: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    user-select: none;
+}
+
+.pfp-img:hover>h3 {
+    opacity: 1;
 }
 
 .pfp-img:hover {
     background-color: #01010173;
     background-blend-mode: multiply;
     cursor: pointer;
+}
+
+@media screen and (max-width:1000px) {
+    #all-members {
+        --tgt: 8;
+    }
 }
 
 .pfp-img[name="emma"] {
@@ -417,25 +438,6 @@ h2 {
 .member-info.active {
     display: block;
 }
-
-.pfp-img {
-    display: flex;
-    align-items: flex-end;
-    border-radius: 1rem;
-}
-
-.pfp-img>h3 {
-    opacity: 0;
-    margin: 1rem;
-    color: white;
-    font-size: 1.5rem;
-    user-select: none;
-}
-
-.pfp-img:hover>h3 {
-    opacity: 1;
-}
-
 
 .nav-arrow {
     background: #020b13;
