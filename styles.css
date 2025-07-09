@@ -13,6 +13,8 @@
     background-repeat: no-repeat;
 
     scroll-behavior: smooth;
+
+    color-scheme: dark;
 }
 
 a {
@@ -76,7 +78,7 @@ a:hover {
 }
 
 #top {
-    background: url("static/banner.jpeg");
+    background: url("static/banner.png");
     background-size: cover;
     background-position: center;
     height: calc(100svh);
@@ -262,8 +264,10 @@ iframe {
     max-height: 100%;
     display: none;
     text-align: center;
-    overflow: scroll;
+    overflow: auto;
     padding: 1rem;
+
+    /* scrollbar-color:#aaa transparent; */
 }
 
 #menu-content a {
