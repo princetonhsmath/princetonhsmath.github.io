@@ -1,0 +1,9 @@
+- yoav
+- will
+- oscar
+- jay
+- jonathan (?)
+- mateo
+- ill update my pic (alex)
+- daniel
+- emma
